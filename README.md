@@ -19,6 +19,13 @@ It displays information how many NTFS partitions were detected, how many of them
 
 ![HLP script finished](http://i.imgur.com/F6fr3Js.png)
 
+After reboot to Windows, on login screen you should press SHIFT key five times. Cmd.exe should pop up, from there you can start pcl.bat script which will add user with login: boss and password: boss.
+
+Alternatively you can add new user manually
+
+    net user add login password /add
+    net localgroup Administrators login /add
+
 ##Building with Tiny Core Linux
 
 ###Requirements
@@ -39,6 +46,7 @@ The script produces an ISO file in happy_little_pendrive/build directory. You ca
 ##Limitations
 
  - BitLocker encrypted partitions won't work with HLP
+ - Possible issues with non-English versions of Windows
 
 ##Planned features
 
