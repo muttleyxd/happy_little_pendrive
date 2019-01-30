@@ -14,9 +14,8 @@ while read -r line; do
     if [ -d "/mnt/windows/Windows/System32" ]; then
         ((fixedPartitions++))
         cd /mnt/windows/Windows/System32
-        noNeedForReplacement=0
-        cmp -s sethc.exe cmd.exe || noNeedForReplacement=1
-        if [ $noNeedForReplacement -eq 0 ]; then
+        SHOULD_REPLACE=`cmp -s sethc.exe cmd.exe; echo $?`
+        if [ $SHOULD_REPLACE -ne 0 ]; then
             cp sethc.exe sethc.bak
             rm -f sethc.exe
             cp cmd.exe sethc.exe
